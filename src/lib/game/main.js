@@ -11,13 +11,20 @@ ig.module(
         "game.entities.key",
         "game.entities.time-block",
         "game.entities.title-image",
+        "game.entities.eye",
+        "game.entities.evil",
+        "game.entities.omega",
 
         "game.levels.title",
         "game.levels.one",
         "game.levels.two",
         "game.levels.three",
         "game.levels.four",
-        "game.levels.five"
+        "game.levels.five",
+        "game.levels.six",
+        "game.levels.seven",
+        "game.levels.eight",
+        "game.levels.end"
     )
     .defines(function () {
 
@@ -45,7 +52,7 @@ ig.module(
                     ];
                 }
 
-                this.loadLevel(LevelFour);
+                this.loadLevel(LevelTitle);
             },
 
             update: function () {
