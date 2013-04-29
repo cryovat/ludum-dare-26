@@ -13,7 +13,7 @@ ig.module(
            checkAgainst: ig.Entity.TYPE.A,
 
            _wmScalable: true,
-           _wmDrawbox: true,
+           _wmDrawBox: true,
            _wmBoxColor: 'rgba(0,255,0,0.5)',
 
             check: function(other) {
@@ -25,12 +25,10 @@ ig.module(
                 } else {
 
                     var level = window[dest];
-
-                    console.log(level);
-
                     if (level) {
-                        console.log("Loading", level);
                         ig.game.loadLevel(level);
+                    } else {
+                        throw new Error("Level '" + dest + "' not found!");
                     }
                 }
             }

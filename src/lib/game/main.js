@@ -1,64 +1,72 @@
-ig.module( 
-	'game.main' 
-)
-.requires(
-	'impact.game',
-	'impact.font',
-    'plugins.touch-button',
+ig.module(
+        'game.main'
+    )
+    .requires(
+        'impact.game',
+        'impact.font',
+        'plugins.touch-button',
 
-    "game.levels.title",
-    "game.levels.one"
-)
-.defines(function(){
+        "game.entities.player",
+        "game.entities.exit",
+        "game.entities.coin",
+        "game.entities.title-image",
 
-LDMenu = ig.Game.extend({
+        "game.levels.title",
+        "game.levels.two",
+        "game.levels.one"
+    )
+    .defines(function () {
 
-    buttons: [],
-    buttonImage: new ig.Image('media/buttons.png'),
+        LDMenu = ig.Game.extend({
 
-	clearColor: "#FFFFFF",
-	font: new ig.Font( 'media/ubuntu-mono-light.png' ),
-	
-	
-	init: function() {
-		ig.input.bind(ig.KEY.Z, "action");
+            buttons: [],
+            buttonImage: new ig.Image('media/buttons.png'),
 
-        var x = ig.system.width - 64;
-            y = ig.system.height - 64;
+            clearColor: "#FFFFFF",
+            font: new ig.Font('media/ubuntu-mono-light.png'),
 
-        ig.input.bind(ig.KEY.Z, "action");
 
-        this.buttons = [
-            new ig.TouchButton("action", x, y, 64, 64, this.buttonImage, 0)
-        ];
+            init: function () {
+                ig.input.bind(ig.KEY.Z, "action");
 
-        this.loadLevel(LevelTitle);
-	},
-	
-	update: function() {
-		// Update all entities and backgroundMaps
-		this.parent();
-	},
-	
-	draw: function() {
-        var i, x, y;
+                var x = ig.system.width - 64;
+                y = ig.system.height - 64;
 
-		// Draw all entities and backgroundMaps
-		this.parent();
+                ig.input.bind(ig.KEY.Z, "action");
 
-        for (i = 0; i < this.buttons.length; i++) {
-            this.buttons[i].draw();
-        }
-		
-		// Add your own drawing code here
-		x = ig.system.width/2,
-		y = ig.system.height/2;
-	}
-});
+                if (ig.ua.mobile) {
+                    this.buttons = [
+                        new ig.TouchButton("action", x, y, 64, 64, this.buttonImage, 0)
+                    ];
+                }
+
+                this.loadLevel(LevelTitle);
+            },
+
+            update: function () {
+                // Update all entities and backgroundMaps
+                this.parent();
+            },
+
+            draw: function () {
+                var i, x, y;
+
+                // Draw all entities and backgroundMaps
+                this.parent();
+
+                for (i = 0; i < this.buttons.length; i++) {
+                    this.buttons[i].draw();
+                }
+
+                // Add your own drawing code here
+                x = ig.system.width / 2,
+                    y = ig.system.height / 2;
+            }
+        });
 
 
 // Start the Game with 60fps, a resolution of 320x240, scaled
 // up by a factor of 2
-ig.main( '#canvas', LDMenu, 60, 640, 480, 1 );
+        ig.main('#canvas', LDMenu, 60, 640, 480, 1);
 
-});
+    });

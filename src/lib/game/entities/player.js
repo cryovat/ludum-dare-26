@@ -17,20 +17,23 @@ ig.module(
 
             size: { x: 32, y: 32 },
             animSheet: new ig.AnimationSheet('media/player.png', 32, 32),
+            currentIndex: 0,
 
             targetVel: { x: 180, y: 0 },
 
             type: ig.Entity.TYPE.A,
             checkAgainst: ig.Entity.TYPE.B,
-            collides: ig.Entity.COLLIDES.ACTIVE,
+            collides: ig.Entity.COLLIDES.PASSIVE,
 
             init: function (x, y, settings) {
                 this.parent(x, y, settings);
 
-                this.addAnim("right", 1, [0]);
-                this.addAnim("up", 1, [4]);
-                this.addAnim("left", 1, [8]);
-                this.addAnim("down", 1, [12]);
+                this.addAnim(0, 1, [0]);
+                this.addAnim(1, 1, [4]);
+                this.addAnim(2, 1, [8]);
+                this.addAnim(3, 1, [12]);
+
+                console.log(this.anims);
 
                 this.vel.x = this.targetVel.x;
                 this.vel.y = this.targetVel.y;
@@ -49,7 +52,8 @@ ig.module(
                         tgt,
                         angle = -Math.PI / 2,
                         ca = Math.cos(angle),
-                        sa = Math.sin(angle);
+                        sa = Math.sin(angle),
+                        ci = this.currentIndex;
 
                     tgt = {
                         x: clamp((vel.x * ca) - (vel.y * sa)),
@@ -62,6 +66,12 @@ ig.module(
                     }
 
                     this.targetVel = tgt;
+
+                    this.currentIndex = ci + 1 < 4 ? ci + 1 : 0;
+
+                    console.log(this.currentIndex);
+
+                    this.currentAnim = this.anims[this.currentIndex];
                 }
 
                 this.parent();

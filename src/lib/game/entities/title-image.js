@@ -11,6 +11,7 @@ ig.module (
 
         size: { x: 256, y: 256 },
         animSheet: new ig.AnimationSheet('media/title2.png', 256, 256),
+        font: new ig.Font("media/ubuntu-mono-light.png"),
 
         init: function(x, y, settings) {
             this.parent(x, y, settings);
@@ -19,13 +20,24 @@ ig.module (
         },
 
         update: function() {
-            this.currentAnim = this.anims.idle;
+            this.parent();
+
+            var text = "Press Action (Z) to start game",
+                px = this.pos.x + this.size.x / 2,
+                py = this.pos.y + this.font.height;
+
+            if (ig.ua.mobile) {
+                text = "Press \u2605 to start game";
+            }
+
+            console.log(text, px, py);
+
+            this.font.draw(text, px, py, ig.Font.ALIGN.CENTER);
 
             if (ig.input.pressed("action")) {
                 ig.game.loadLevel(LevelOne);
             }
 
-            this.parent();
         }
 
 
