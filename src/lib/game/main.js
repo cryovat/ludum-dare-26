@@ -9,12 +9,15 @@ ig.module(
         "game.entities.player",
         "game.entities.exit",
         "game.entities.key",
+        "game.entities.time-block",
         "game.entities.title-image",
 
         "game.levels.title",
         "game.levels.one",
         "game.levels.two",
-        "game.levels.three"
+        "game.levels.three",
+        "game.levels.four",
+        "game.levels.five"
     )
     .defines(function () {
 
@@ -42,7 +45,7 @@ ig.module(
                     ];
                 }
 
-                this.loadLevel(LevelTitle);
+                this.loadLevel(LevelFour);
             },
 
             update: function () {
