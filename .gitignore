@@ -4,3 +4,4 @@ src/weltmeister.html
 src/tools
 src/lib/impact
 src/lib/weltmeister
+src/lib/plugins/touch-button.js
