@@ -21,7 +21,7 @@ ig.module(
             init: function (x, y, settings) {
                 this.parent(x, y, settings);
 
-                this.addAnim("idle", 1, [0]);
+                this.addAnim("idle", 0.25, [0, 1]);
             },
 
             update: function () {

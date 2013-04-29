@@ -27,10 +27,10 @@ ig.module(
             init: function (x, y, settings) {
                 this.parent(x, y, settings);
 
-                this.addAnim(0, 1, [0]);
-                this.addAnim(1, 1, [4]);
-                this.addAnim(2, 1, [8]);
-                this.addAnim(3, 1, [12]);
+                this.addAnim(0, 0.15, [0,1,2,3,2,1]);
+                this.addAnim(1, 0.15, [4,5,6,7,6,5]);
+                this.addAnim(2, 0.15, [8,9,10,11,10,9]);
+                this.addAnim(3, 0.15, [12,13,14,15,14,13]);
 
                 this.accel.x = this.targetAcc.x;
                 this.accel.y = this.targetAcc.y;
