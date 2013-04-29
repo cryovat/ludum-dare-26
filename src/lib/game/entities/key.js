@@ -8,7 +8,7 @@ ig.module(
         EntityKey = ig.Entity.extend({
 
             size: { x: 16, y: 16},
-            origin: { x: 8, y: 8},
+            origin: { x: 8, y: 8},
 
             lockType: "a",
             animSheet: new ig.AnimationSheet('media/keysandlocks.png', 32, 32),
@@ -36,7 +36,7 @@ ig.module(
 
                 ig.game.getEntitiesByType(EntityLock).forEach(function (e) {
                     e.turnKey(type);
-                })
+                });
 
                 this.kill();
             }

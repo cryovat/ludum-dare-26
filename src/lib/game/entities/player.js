@@ -10,8 +10,7 @@ ig.module(
                 fn = Math.floor(Math.abs(n));
 
             return fn > 170 ? sign * 180 : 0;
-        }
-
+        };
 
         EntityPlayer = ig.Entity.extend({
 
@@ -35,7 +34,7 @@ ig.module(
 
                 this.accel.x = this.targetAcc.x;
                 this.accel.y = this.targetAcc.y;
-                this.vel = { x: this.targetAcc.x, y: this.targetAcc.y};
+                this.vel = { x: this.targetAcc.x, y: this.targetAcc.y};
                 this.maxVel = {x: 180, y: 180};
             },
 
@@ -62,7 +61,7 @@ ig.module(
                     this.accel = {
                         x: tgt.x * 2,
                         y: tgt.y * 2
-                    }
+                    };
 
                     this.targetAcc = tgt;
 

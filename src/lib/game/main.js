@@ -8,7 +8,6 @@ ig.module(
 
         "game.entities.player",
         "game.entities.exit",
-        "game.entities.coin",
         "game.entities.key",
         "game.entities.title-image",
 
