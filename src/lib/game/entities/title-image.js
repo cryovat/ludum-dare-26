@@ -10,7 +10,7 @@ ig.module (
     EntityTitleImage = ig.Entity.extend({
 
         size: { x: 256, y: 256 },
-        animSheet: new ig.AnimationSheet('media/title2.png', 256, 256),
+        animSheet: new ig.AnimationSheet('media/title.png', 256, 256),
         font: new ig.Font("media/ubuntu-mono-light.png"),
 
         init: function(x, y, settings) {
@@ -30,9 +30,7 @@ ig.module (
                 text = "Press \u2605 to start game";
             }
 
-            console.log(text, px, py);
-
-            this.font.draw(text, px, py, ig.Font.ALIGN.CENTER);
+            this.font.draw("ohai", 40, 40, ig.Font.ALIGN.CENTER);
 
             if (ig.input.pressed("action")) {
                 ig.game.loadLevel(LevelOne);

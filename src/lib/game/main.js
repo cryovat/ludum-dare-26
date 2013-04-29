@@ -9,11 +9,13 @@ ig.module(
         "game.entities.player",
         "game.entities.exit",
         "game.entities.coin",
+        "game.entities.key",
         "game.entities.title-image",
 
         "game.levels.title",
+        "game.levels.one",
         "game.levels.two",
-        "game.levels.one"
+        "game.levels.three"
     )
     .defines(function () {
 
@@ -27,6 +29,7 @@ ig.module(
 
 
             init: function () {
+
                 ig.input.bind(ig.KEY.Z, "action");
 
                 var x = ig.system.width - 64;
@@ -34,7 +37,7 @@ ig.module(
 
                 ig.input.bind(ig.KEY.Z, "action");
 
-                if (ig.ua.mobile) {
+                if (ig.ua.android || ig.ua.iOS || ig.ua.mobile) {
                     this.buttons = [
                         new ig.TouchButton("action", x, y, 64, 64, this.buttonImage, 0)
                     ];

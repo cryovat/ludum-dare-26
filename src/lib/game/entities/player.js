@@ -19,7 +19,7 @@ ig.module(
             animSheet: new ig.AnimationSheet('media/player.png', 32, 32),
             currentIndex: 0,
 
-            targetVel: { x: 180, y: 0 },
+            targetAcc: { x: 180, y: 0 },
 
             type: ig.Entity.TYPE.A,
             checkAgainst: ig.Entity.TYPE.B,
@@ -33,10 +33,9 @@ ig.module(
                 this.addAnim(2, 1, [8]);
                 this.addAnim(3, 1, [12]);
 
-                console.log(this.anims);
-
-                this.vel.x = this.targetVel.x;
-                this.vel.y = this.targetVel.y;
+                this.accel.x = this.targetAcc.x;
+                this.accel.y = this.targetAcc.y;
+                this.vel = { x: this.targetAcc.x, y: this.targetAcc.y};
                 this.maxVel = {x: 180, y: 180};
             },
 
@@ -48,7 +47,7 @@ ig.module(
 
                 if (this.isStopped() && ig.input.pressed("action")) {
 
-                    var vel = this.targetVel,
+                    var acc = this.targetAcc,
                         tgt,
                         angle = -Math.PI / 2,
                         ca = Math.cos(angle),
@@ -56,20 +55,18 @@ ig.module(
                         ci = this.currentIndex;
 
                     tgt = {
-                        x: clamp((vel.x * ca) - (vel.y * sa)),
-                        y: clamp((vel.x * sa) + (vel.y * ca))
+                        x: clamp((acc.x * ca) - (acc.y * sa)),
+                        y: clamp((acc.x * sa) + (acc.y * ca))
                     };
 
-                    this.vel = {
-                        x: tgt.x,
-                        y: tgt.y
+                    this.accel = {
+                        x: tgt.x * 2,
+                        y: tgt.y * 2
                     }
 
-                    this.targetVel = tgt;
+                    this.targetAcc = tgt;
 
                     this.currentIndex = ci + 1 < 4 ? ci + 1 : 0;
-
-                    console.log(this.currentIndex);
 
                     this.currentAnim = this.anims[this.currentIndex];
                 }
