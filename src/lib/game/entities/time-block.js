@@ -45,7 +45,6 @@ ig.module(
 
                 if (this.timer.delta() > 0) {
                     this.timer.reset();
-                    console.log("RESET");
                     this.flip();
                 }
             },

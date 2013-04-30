@@ -29,7 +29,6 @@ ig.module(
 
                 if (this.currentAnim === this.anims.closed) {
                     this.currentAnim = this.anims.open;
-                    window.close();
                 }
             }
         });
